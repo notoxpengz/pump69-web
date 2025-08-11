@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>League 123 - Redirecting...</title>
+</head>
+<body>
+    <script>
+        // Redirect to the main SPA with the specific league route
+        // This enables client-side routing for direct access to /pump69-web/leagues/123
+        const currentPath = window.location.pathname;
+        const search = window.location.search;
+        const hash = window.location.hash;
+        
+        // Build the redirect URL to load the SPA with the leagues/123 route
+        let redirectPath = '/pump69-web/index.html';
+        
+        // Append the current path as a redirect parameter for the SPA router
+        redirectPath += '?redirect=' + encodeURIComponent('/leagues/123' + search + hash);
+        
+        window.location.replace(redirectPath);
+    </script>
+    <noscript>
+        <p>Redirecting to League 123...</p>
+        <p>If you are not automatically redirected, <a href="/pump69-web/index.html?redirect=%2Fleagues%2F123">click here</a>.</p>
+    </noscript>
+</body>
+</html>
