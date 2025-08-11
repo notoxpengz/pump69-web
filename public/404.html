@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page Not Found - Redirecting...</title>
+</head>
+<body>
     <script>
         // Redirect any 404 requests to the index page for client-side routing
         // This is necessary for SPAs deployed on GitHub Pages
-        window.location.replace('/pump69-web/');
+        // Preserve the current path by appending it as a query parameter
+        const currentPath = window.location.pathname;
+        const search = window.location.search;
+        const hash = window.location.hash;
+        
+        // Build the redirect URL with preserved path
+        let redirectPath = '/pump69-web/index.html';
+        if (currentPath !== '/pump69-web/' && currentPath !== '/pump69-web/index.html') {
+            redirectPath += '?redirect=' + encodeURIComponent(currentPath + search + hash);
+        } else if (search || hash) {
+            redirectPath += search + hash;
+        }
+        
+        window.location.replace(redirectPath);
     </script>
-</head>
-<body>
     <h1>Redirecting...</h1>
-    <p>If you are not automatically redirected, <a href="/pump69-web/">click here</a>.</p>
+    <p>If you are not automatically redirected, <a href="/pump69-web/index.html">click here</a>.</p>
 </body>
 </html>
